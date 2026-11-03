@@ -1,12 +1,12 @@
 server:
-    port: 8080
+    port: ----
 
 spring:
     datasource:
         # Appended the missing public key retrieval property flag at the end of the query string
-        url: jdbc:mysql://localhost:3307/mydb?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-        username: root
-        password: aditoe
+        url: jdbc:mysql://localhost:-----/mydb?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+        username: ----
+        password: --------
         driver-class-name: com.mysql.cj.jdbc.Driver
 
     jpa:
@@ -21,4 +21,4 @@ spring:
 # Custom property for your external Python ML microservice
 ml:
     forecasting-service:
-        url: http://localhost:8000/api/v1/predict
+        url: http://localhost:----/api/v1/predict
