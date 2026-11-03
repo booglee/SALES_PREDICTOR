@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vojas Supply Chain & Procurement Intelligence Console</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen font-sans antialiased text-slate-800">
+
+<!-- Global Application Header -->
+<header class="bg-slate-900 text-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-indigo-500 p-2 rounded-xl text-white shadow-lg">
+                    <i class="fa-solid fa-boxes-stacked text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-lg tracking-tight">VOJAS</h1>
+                    <p class="text-xs text-slate-400 font-medium tracking-wide">Procurement Intelligence Engine</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="text-xs font-semibold bg-emerald-500/10 text-emerald-400 px-3 py-1.5 rounded-full border border-emerald-500/20 flex items-center">
+                    <span class="h-2 w-2 rounded-full bg-emerald-400 mr-2 animate-pulse"></span>Live Status: Port 8080
+                </span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Workspace Container -->
+<main class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8 space-y-8">
+
+    <!-- Informational Banner -->
+    <div class="bg-gradient-to-r from-indigo-900 to-slate-900 rounded-3xl p-6 sm:p-8 text-white relative overflow-hidden shadow-xl border border-slate-800">
+        <div class="relative z-10 max-w-2xl">
+            <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-1 rounded-md">Operations Analytics Layer</span>
+            <h2 class="text-2xl sm:text-3xl font-bold mt-3 tracking-tight">Automated Demand Forecasting Console</h2>
+            <p class="text-slate-300 mt-2 text-sm sm:text-base leading-relaxed">Isolate scattered product trends, calculate mathematical safety buffers via python pipelines, and push validated replenishment orders straight to MySQL storage files.</p>
+        </div>
+        <div class="absolute right-0 bottom-0 opacity-10 text-9xl m-4 pointer-events-none hidden md:block">
+            <i class="fa-solid fa-brain"></i>
+        </div>
+    </div>
+
+    <!-- Upper Section: Input Form and Real-time Results Card -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+        <!-- Target Execution Form Panel -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs h-fit">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-4 flex items-center">
+                <i class="fa-solid fa-square-poll-vertical mr-2 text-indigo-500"></i>Run Optimization Query
+            </h3>
+            <form id="queryForm" class="space-y-4">
+                <div>
+                    <label for="productCode" class="block text-xs font-semibold text-slate-500 uppercase mb-2">Target Product Identifier</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400"><i class="fa-solid fa-tag"></i></span>
+                        <input type="text" id="productCode" required placeholder="e.g. 25866, 25845"
+                               class="w-full pl-10 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 outline-hidden font-medium text-sm transition-all placeholder-slate-400">
+                    </div>
+                </div>
+                <div>
+                    <label for="leadTime" class="block text-xs font-semibold text-slate-500 uppercase mb-2">Fulfillment Lead Time</label>
+                    <select id="leadTime" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 outline-hidden font-medium text-sm transition-all cursor-pointer">
+                        <option value="2">2 Weeks</option>
+                        <option value="4" selected>4 Weeks (Standard Baseline)</option>
+                        <option value="6">6 Weeks</option>
+                        <option value="8">8 Weeks</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="serviceLevel" class="block text-xs font-semibold text-slate-500 uppercase mb-2">Service Protection Level</label>
+                    <select id="serviceLevel" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 outline-hidden font-medium text-sm transition-all cursor-pointer">
+                        <option value="1.28">80% Protection Rate (Alpha=1.28)</option>
+                        <option value="1.65" selected>95% Protection Rate (Alpha=1.65)</option>
+                        <option value="1.96">99% Protection Rate (Alpha=1.96)</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-xl text-sm transition-all shadow-md shadow-indigo-600/10 hover:shadow-indigo-600/20 hover:-translate-y-0.5 active:translate-y-0 active:scale-98 flex items-center justify-center space-x-2 cursor-pointer">
+                    <i class="fa-solid fa-bolt"></i><span>Compute Restock Target</span>
+                </button>
+            </form>
+        </div>
+
+        <!-- Dynamic Viewport Results Dashboard -->
+        <div class="lg:col-span-2 flex flex-col justify-stretch">
+
+            <!-- Loading Animation Card Placeholder -->
+            <div id="loader" class="hidden flex-1 bg-white rounded-2xl border border-slate-200 p-8 flex flex-col items-center justify-center text-center shadow-xs">
+                <div class="w-12 h-12 border-4 border-indigo-500/20 border-t-indigo-600 rounded-full animate-spin mb-4"></div>
+                <h4 class="text-slate-900 font-bold tracking-tight">Syncing Time-Series Pipelines...</h4>
+                <p class="text-xs text-slate-400 mt-1 max-w-sm">Parsing localized matrix data rows, calculating mean standard variance coordinates, and formatting trend vectors.</p>
+            </div>
+
+            <!-- Empty Initial Viewport State -->
+            <div id="emptyState" class="flex-1 bg-white rounded-2xl border border-slate-200 border-dashed p-8 flex flex-col items-center justify-center text-center text-slate-400 shadow-xs">
+                <div class="text-5xl text-slate-300 mb-3"><i class="fa-solid fa-chart-pie"></i></div>
+                <h4 class="text-slate-700 font-semibold text-sm">No Forecast Active</h4>
+                <p class="text-xs max-w-xs mt-1">Enter a valid stock component tracking code inside the parameters form container block to load system variables.</p>
+            </div>
+
+            <!-- Calculated Metric Profile Content Output Panel -->
+            <div id="resultsCard" class="hidden flex-1 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between">
+                <div class="p-6 bg-slate-900 text-white flex justify-between items-center">
+                    <div class="flex items-center space-x-3">
+                        <span class="h-2.5 w-2.5 rounded-full bg-indigo-400 animate-ping"></span>
+                        <h3 class="font-bold text-sm uppercase tracking-wider text-indigo-300">Live Mathematical Prediction Logged</h3>
+                    </div>
+                    <span id="outputBadge" class="text-xs font-bold px-3 py-1 rounded-md bg-white/10 border border-white/10 tracking-widest">CODE: -</span>
+                </div>
+
+                <div class="p-6 grid grid-cols-1 sm:grid-cols-3 gap-6 flex-1 items-center">
+                    <div class="bg-slate-50 border border-slate-100 rounded-xl p-4 flex items-center space-x-4">
+                        <div class="p-3 bg-amber-50 rounded-xl text-amber-600"><i class="fa-solid fa-arrow-trend-up text-xl"></i></div>
+                        <div>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Next Month Demand</span>
+                            <h4 id="outputDemand" class="text-xl font-bold text-slate-900 mt-0.5">-</h4>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-100 rounded-xl p-4 flex items-center space-x-4">
+                        <div class="p-3 bg-emerald-50 rounded-xl text-emerald-600"><i class="fa-solid fa-shield-halved text-xl"></i></div>
+                        <div>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Safety Buffer Stock</span>
+                            <h4 id="outputSafety" class="text-xl font-bold text-slate-900 mt-0.5">-</h4>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-100 rounded-xl p-4 flex items-center space-x-4">
+                        <div class="p-3 bg-indigo-50 rounded-xl text-indigo-600"><i class="fa-solid fa-cart-shopping text-xl"></i></div>
+                        <div>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Suggested Units to Buy</span>
+                            <h4 id="outputBuy" class="text-xl font-bold text-slate-900 mt-0.5">-</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Lower Section: Historical Ledger Table -->
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="p-6 border-b border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div>
+                <h3 class="font-bold text-base text-slate-900">Procurement Ledger & Approvals</h3>
+                <p class="text-xs text-slate-500 mt-0.5">Review and authorize logged stock recommendations synced with Spring Boot.</p>
+            </div>
+            <div class="flex items-center space-x-3 w-full sm:w-auto">
+                <select id="tableFilter" class="px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-600 outline-hidden cursor-pointer">
+                    <option value="ALL">Show All Statuses</option>
+                    <option value="PENDING">Pending Approval</option>
+                    <option value="APPROVED">Approved</option>
+                    <option value="REJECTED">Rejected</option>
+                </select>
+                <button id="refreshLedger" class="p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-semibold transition-all cursor-pointer" title="Refresh Table">
+                    <i class="fa-solid fa-rotate"></i>
+                </button>
+            </div>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                <tr class="bg-slate-50 text-slate-400 text-[10px] uppercase font-bold tracking-wider border-b border-slate-100">
+                    <th class="py-3 px-6">ID</th>
+                    <th class="py-3 px-6">Product Code</th>
+                    <th class="py-3 px-6">Demand Forecast</th>
+                    <th class="py-3 px-6">Safety Stock</th>
+                    <th class="py-3 px-6">Suggested Units</th>
+                    <th class="py-3 px-6">Timestamp</th>
+                    <th class="py-3 px-6">Status</th>
+                    <th class="py-3 px-6">Actions</th>
+                </tr>
+                </thead>
+                <tbody id="ledgerBody" class="divide-y divide-slate-100 text-sm text-slate-600">
+                <!-- Dynamic rows populate here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</main>
+
+<!-- Floating Toast Notification Banner -->
+<div id="toast" class="hidden fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-slate-800 items-center space-x-3 transition-all duration-300 translate-y-4 opacity-0">
+    <span id="toastIcon"><i class="fa-solid fa-circle-check text-emerald-400"></i></span>
+    <span id="toastText" class="text-xs font-medium">Notification message here</span>
+</div>
+
+</body>
+<script>
+    // Backend Base URL Configuration (Set to Spring Boot port 8080)
+    const API_BASE_URL = 'http://localhost:8080';
+
+    // Form & Tracking Cache Containers
+    const queryForm = document.getElementById('queryForm');
+    const loader = document.getElementById('loader');
+    const emptyState = document.getElementById('emptyState');
+    const resultsCard = document.getElementById('resultsCard');
+    const ledgerBody = document.getElementById('ledgerBody');
+    const tableFilter = document.getElementById('tableFilter');
+    const refreshLedger = document.getElementById('refreshLedger');
+
+    let globalLedgerLogs = [];
+    let currentCalculatedLogId = null;
+
+    // Asynchronous Notification Animation Dispatcher
+    function triggerToast(message, isError = false) {
+        const toast = document.getElementById('toast');
+        document.getElementById('toastText').textContent = message;
+        document.getElementById('toastIcon').innerHTML = isError
+            ? '<i class="fa-solid fa-triangle-exclamation text-rose-400"></i>'
+            : '<i class="fa-solid fa-circle-check text-emerald-400"></i>';
+
+        toast.classList.remove('hidden', 'translate-y-4', 'opacity-0');
+        toast.classList.add('flex', 'translate-y-0', 'opacity-100');
+
+        setTimeout(() => {
+            toast.classList.remove('translate-y-0', 'opacity-100');
+            toast.classList.add('translate-y-4', 'opacity-0');
+            setTimeout(() => toast.classList.add('hidden'), 300);
+        }, 3500);
+    }
+
+    // Fetch Live Logs array directly from Spring Boot Controller Layer
+    async function synchroniseLedgerTable() {
+        try {
+            const response = await fetch(`${API_BASE_URL}/api/forecast/all-suggestions`);
+            if (!response.ok) throw new Error();
+            globalLedgerLogs = await response.json();
+            renderFilteredLedger();
+        } catch (e) {
+            ledgerBody.innerHTML = `<tr><td colspan="8" class="text-center py-8 text-rose-500 bg-rose-50/10 font-semibold"><i class="fa-solid fa-circle-xmark mr-1.5"></i>Error syncing with Spring Boot repository layer (Port 8080).</td></tr>`;
+        }
+    }
+
+    // Render rows dynamically based on the dropdown selection filter
+    function renderFilteredLedger() {
+        const currentFilter = tableFilter.value;
+        const targetData = globalLedgerLogs.filter(log => currentFilter === 'ALL' || log.status === currentFilter);
+
+        if (targetData.length === 0) {
+            ledgerBody.innerHTML = `<tr><td colspan="8" class="text-center py-10 text-slate-400 italic bg-slate-50/5">No records matched the active status filter criteria.</td></tr>`;
+            return;
+        }
+
+        ledgerBody.innerHTML = targetData.map(log => {
+            let badgeClass = "bg-amber-50 text-amber-700 border-amber-200/60";
+            if (log.status === 'APPROVED') badgeClass = "bg-emerald-50 text-emerald-700 border-emerald-200/60";
+            if (log.status === 'REJECTED') badgeClass = "bg-rose-50 text-rose-700 border-rose-200/60";
+
+            const displayDate = log.generatedAt ? new Date(log.generatedAt).toLocaleString() : 'n/a';
+
+            return `
+        <tr class="hover:bg-slate-50/80 transition-colors">
+            <td class="py-3 px-6 font-mono text-xs font-bold text-slate-500">#${log.id}</td>
+            <td class="py-3 px-6 font-semibold text-slate-900">${log.productCode}</td>
+            <td class="py-3 px-6">${log.expectedNextMonthDemand} items</td>
+            <td class="py-3 px-6">${log.calculatedSafetyStock} units</td>
+            <td class="py-3 px-6 font-bold text-indigo-600">${log.suggestedUnitsToBuy} items</td>
+            <td class="py-3 px-6 text-xs text-slate-500">${displayDate}</td>
+            <td class="py-3 px-6"><span class="px-2.5 py-1 rounded-md text-xs font-semibold border ${badgeClass}">${log.status}</span></td>
+            <td class="py-3 px-6">
+                ${log.status === 'PENDING' ? `
+                    <button onclick="updateOrderStatus(${log.id}, 'approve')" class="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold mr-1 cursor-pointer transition-colors">Approve</button>
+                    <button onclick="updateOrderStatus(${log.id}, 'reject')" class="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white rounded-lg text-xs font-semibold cursor-pointer transition-colors">Reject</button>
+                ` : `<span class="text-xs text-slate-400 font-medium italic">Processed</span>`}
+            </td>
+        </tr>
+        `;
+        }).join('');
+    }
+
+    // Trigger Status modifications dynamically from buttons
+    async function updateOrderStatus(id, action) {
+        try {
+            const response = await fetch(`${API_BASE_URL}/api/forecast/${action}/${id}`, { method: 'POST' });
+            if (response.ok) {
+                triggerToast(`Order suggestion ID #${id} updated successfully!`);
+                if (id === currentCalculatedLogId) resultsCard.classList.add('hidden');
+                synchroniseLedgerTable();
+            } else {
+                throw new Error();
+            }
+        } catch (e) {
+            triggerToast("Unable to record operations change.", true);
+        }
+    }
+
+    // Handle Main Parameters Form Calculation Request Submissions
+    queryForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const product = document.getElementById('productCode').value.trim();
+        const time = document.getElementById('leadTime').value;
+        const service = document.getElementById('serviceLevel').value;
+
+        emptyState.classList.add('hidden');
+        resultsCard.classList.add('hidden');
+        loader.classList.remove('hidden');
+
+        try {
+            const url = `${API_BASE_URL}/api/forecast/units-to-buy?productCode=${product}&leadTime=${time}&serviceLevel=${service}`;
+            const response = await fetch(url);
+            if (!response.ok) throw new Error("Product code lookup mapping target reference failed.");
+            const data = await response.json();
+
+            // Bind outputs
+            document.getElementById('outputBadge').textContent = `CODE: ${data.productCode}`;
+            document.getElementById('outputDemand').textContent = `${data.expectedNextMonthDemand} Units`;
+            document.getElementById('outputSafety').textContent = `${data.calculatedSafetyStock} Units`;
+            document.getElementById('outputBuy').textContent = `${data.suggestedUnitsToBuy} Units`;
+
+            loader.classList.add('hidden');
+            resultsCard.classList.remove('hidden');
+            triggerToast("Regression analysis calculations populated successfully!");
+
+            await synchroniseLedgerTable();
+            if (globalLedgerLogs.length > 0) {
+                currentCalculatedLogId = globalLedgerLogs[globalLedgerLogs.length - 1].id;
+            }
+        } catch (err) {
+            loader.classList.add('hidden');
+            emptyState.classList.remove('hidden');
+            triggerToast(err.message, true);
+        }
+    });
+
+    tableFilter.addEventListener('change', renderFilteredLedger);
+    refreshLedger.addEventListener('click', synchroniseLedgerTable);
+
+    window.addEventListener('DOMContentLoaded', synchroniseLedgerTable);
+</script>
+</html>
