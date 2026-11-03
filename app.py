@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-import pandas as pd
+import pandas as pd#run these files(app,engine) your system and also add the sales_record.csv in the same------------------ 
 import os
 from engine import InventoryPredictor
 
